@@ -18,15 +18,16 @@ pipeline {
             steps {
                 script {
                     // Checkout the ansible playbooks from the repository
-                    dir('ansible') {
-                        checkout($class: 'GitSCM'),
-                        branches: [[name: '*/main']],
-                        doGenerateSubmoduleConfigurations: false,
-                        extensions: [],
-                        userRemoteConfigs: [[
-                            url: "git@github.com:sivakumarr5/playbooks.git"
-                        ]]
-                    }
+                    // dir('ansible') {
+                    //     checkout($class: 'GitSCM'),
+                    //     branches: [[name: '*/main']],
+                    //     doGenerateSubmoduleConfigurations: false,
+                    //     extensions: [],
+                    //     userRemoteConfigs: [[
+                    //         url: "git@github.com:sivakumarr5/playbooks.git"
+                    //     ]]
+                    // }
+                    sh "git clone git@github.com:sivakumarr5/playbooks.git"
             }
         }
     }
