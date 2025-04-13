@@ -18,9 +18,7 @@ pipeline {
             steps {
                 script {
                     // Checkout the repository git@github.com:sivakumarr5/playbooks.git
-                    git branch: 'main',
-                        changelog: false,
-                        url: 'git@github.com:sivakumarr5/playbooks.git'
+                    sh 'git clone ßgit@github.com:sivakumarr5/playbooks.git'
 
 
             }
