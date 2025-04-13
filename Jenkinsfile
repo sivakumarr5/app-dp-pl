@@ -12,10 +12,31 @@ pipeline {
         key = "value"
     }
 
+    // checkout scm
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    // Checkout the ansible playbooks from the repository
+                    dir('ansible') {
+                        checkout($class: 'GitSCM'),
+                        branches: [[name: '*/main']],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [],
+                        userRemoteConfigs: [[
+                            url: "git@github.com:sivakumarr5/playbooks.git"
+                        ]]
+                    }
+            }
+        }
+    }
+
     stages {
         stage('Run Ansible Playbook') {
             steps {
                 script {
+                    sh 'pwd'
+                    sh 'ls -l'
                     // Run the ansible playbook with the specified inventory file
                     sh 'ansible-playbook -i inventory.ini playbook1.yml'
                 }
