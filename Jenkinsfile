@@ -17,10 +17,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    // Checkout the repository git@github.com:sivakumarr5/playbooks.git
-                    sh 'git clone ßgit@github.com:sivakumarr5/playbooks.git'
-
-
+                    // Checkout the ansible playbooks from the repository
+                    dir('ansible') {
+                        checkout($class: 'GitSCM'),
+                        branches: [[name: '*/main']],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [],
+                        userRemoteConfigs: [[
+                            url: "git@github.com:sivakumarr5/playbooks.git"
+                        ]]
+                    }
             }
         }
     }
@@ -29,11 +35,12 @@ pipeline {
             steps {
                 script {
                     sh 'pwd'
-                    sh 'ls -l'
+                    sh 'ls'
                     // Run the ansible playbook with the specified inventory file
                     sh 'ansible-playbook -i inventory.ini playbook1.yml'
                 }
             }
         }
+    
 }
 }
