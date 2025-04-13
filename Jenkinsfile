@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Run the ansible playbook with the specified inventory file
-                    sh 'ansible-playbook -i inventory.ini playbook.yml'
+                    sh 'ansible-playbook -i inventory.ini playbook1.yml'
                 }
             }
         }
