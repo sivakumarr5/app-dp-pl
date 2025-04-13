@@ -9,7 +9,7 @@ pipeline {
     }
 
     environment {
-        KEY: "value"
+        key = "value"
     }
 
     stages {
