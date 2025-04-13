@@ -1,4 +1,4 @@
-# pipeline to checkout ansibe playbooks and run them with sh
+// pipeline to checkout ansibe playbooks and run them with sh
 pipeline {
     agent any
 
