@@ -17,16 +17,12 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    // Checkout the ansible playbooks from the repository
-                    dir('ansible') {
-                        checkout($class: 'GitSCM'),
-                        branches: [[name: '*/main']],
-                        doGenerateSubmoduleConfigurations: false,
-                        extensions: [],
-                        userRemoteConfigs: [[
-                            url: "git@github.com:sivakumarr5/playbooks.git"
-                        ]]
-                    }
+                    // Checkout the repository git@github.com:sivakumarr5/playbooks.git
+                    git branch: 'main',
+                        changelog: false,
+                        url: 'git@github.com:sivakumarr5/playbooks.git'
+
+
             }
         }
     }
