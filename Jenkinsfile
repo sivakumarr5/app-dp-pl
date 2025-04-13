@@ -13,14 +13,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                script {
-                    // Checkout the ansible playbooks from the repository
-                    checkout scm
-                }
-            }
-        }
         stage('Run Ansible Playbook') {
             steps {
                 script {
